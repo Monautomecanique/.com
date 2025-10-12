@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Auto Mécanique</title>
+  <style>
+    * {
+      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: white;
+      color: black;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      background-color: white;
+    }
+
+    header h1 {
+      font-size: 3em;
+      color: black;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #f5f5f5;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: black;
+      margin: 0 25px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #007bff;
+    }
+
+    section {
+      padding: 80px 20px;
+      text-align: center;
+      transition: all 0.5s ease-in-out;
+    }
+
+    /* Section Services */
+    .services img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin: 20px;
+      transition: transform 0.3s;
+    }
+
+    .services img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Avantages */
+    .avantages ul {
+      list-style-type: none;
+      max-width: 600px;
+      margin: 30px auto;
+      text-align: left;
+      font-size: 1.1em;
+    }
+
+    .avantages li {
+      margin-bottom: 10px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .avantages li::before {
+      content: "✔️";
+      position: absolute;
+      left: 0;
+    }
+
+    /* Réservation */
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    form input, form select, form button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    form button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    form button:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      background-color: #f5f5f5;
+      text-align: center;
+      padding: 30px 10px;
+      margin-top: 40px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Section 1 : Titre -->
+  <header id="accueil">
+    <h1>Mon Auto Mécanique</h1>
+  </header>
+
+  <!-- Menu de navigation -->
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#avantages">À propos</a>
+    <a href="#reservation">Réserver</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- Section 2 : Description -->
+  <section id="description">
+    <h2>Services à domicile pour votre voiture</h2>
+    <p>Nous offrons un service de mécanique complet à domicile : entretien, réparation, diagnostic et plus encore. 
+       Profitez du confort de votre maison pendant que nous prenons soin de votre véhicule !</p>
+  </section>
+
+  <!-- Section 3 : Photos des services -->
+  <section id="services" class="services">
+    <h2>Nos Services</h2>
+    <div>
+      <img src="https://images.unsplash.com/photo-1607860108855-31c9e42b9b3b" alt="Entretien courant">
+      <img src="https://images.unsplash.com/photo-1588600878108-578307a3cc9a" alt="Réparation mécanique">
+      <img src="https://images.unsplash.com/photo-1608666637852-c42c6b3e4183" alt="Diagnostic et dépannage">
+    </div>
+  </section>
+
+  <!-- Section 4 : Avantages -->
+  <section id="avantages" class="avantages">
+    <h2>Pourquoi choisir Mon Auto Mécanique ?</h2>
+    <ul>
+      <li>Gain de temps</li>
+      <li>Souplesse</li>
+      <li>Transparence</li>
+      <li>Meilleur tarif sur le marché</li>
+    </ul>
+  </section>
+
+  <!-- Section 5 : Réservation -->
+  <section id="reservation">
+    <h2>Réserver un rendez-vous</h2>
+    <form>
+      <label>Nom complet :</label>
+      <input type="text" placeholder="Votre nom" required>
+
+      <label>Numéro de téléphone :</label>
+      <input type="tel" placeholder="873-xxx-xxxx" required>
+
+      <label>Adresse domicile :</label>
+      <input type="text" placeholder="Votre adresse" required>
+
+      <label>Type de service :</label>
+      <select required>
+        <option value="">Choisir un service</option>
+        <option>Entretien courant</option>
+        <option>Réparation mécanique</option>
+        <option>Diagnostic et dépannage</option>
+      </select>
+
+      <label>Date :</label>
+      <input type="date" required>
+
+      <button type="submit">Envoyer la demande</button>
+    </form>
+  </section>
+
+  <!-- Section 6 : À propos -->
+  <section id="apropos">
+    <h2>À propos de nous</h2>
+    <p>Mon Auto Mécanique est une entreprise spécialisée dans les services mécaniques à domicile. 
+       Nous mettons la satisfaction du client au cœur de notre mission en offrant des services fiables, rapides et économiques.</p>
+  </section>
+
+  <!-- Section 7 : Contact -->
+  <footer id="contact">
+    <h2>Contactez-nous</h2>
+    <p>📞 Téléphone : <a href="tel:8733397207">873-339-7207</a></p>
+    <p>📧 Email : <a href="mailto:monautomecanique@gmail.com">monautomecanique@gmail.com</a></p>
+    <p>© 2025 Mon Auto Mécanique - Tous droits réservés</p>
+  </footer>
+
+</body>
+</html>
