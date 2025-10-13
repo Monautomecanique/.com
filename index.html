@@ -3,108 +3,170 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mon Auto Mécanique - Services de mécanique à domicile pour entretien, réparation et diagnostic.">
   <title>Mon Auto Mécanique</title>
   <style>
     * {
-      scroll-behavior: smooth;
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
     }
 
     body {
-      background-color: white;
-      color: black;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
     }
 
+    /* Smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Header */
     header {
       text-align: center;
-      padding: 60px 20px;
-      background-color: white;
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #ffffff, #e6e6e6);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     header h1 {
-      font-size: 3em;
-      color: black;
+      font-size: 3.5rem;
+      color: #1a1a1a;
+      animation: fadeIn 1s ease-in;
     }
 
+    /* Navigation */
     nav {
-      display: flex;
-      justify-content: center;
-      background-color: #f5f5f5;
+      background-color: #ffffff;
       padding: 15px 0;
       position: sticky;
       top: 0;
       z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     nav a {
       text-decoration: none;
-      color: black;
-      margin: 0 25px;
-      font-weight: bold;
-      transition: color 0.3s;
+      color: #333;
+      margin: 0 20px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
 
     nav a:hover {
       color: #007bff;
+      transform: translateY(-2px);
     }
 
+    /* Section Transitions */
     section {
       padding: 80px 20px;
       text-align: center;
-      transition: all 0.5s ease-in-out;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* Section Services */
+    .services {
+      background-color: #f5f5f5;
+    }
+
+    .services .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
     .services img {
       width: 300px;
       height: 200px;
       object-fit: cover;
       border-radius: 10px;
-      margin: 20px;
-      transition: transform 0.3s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .services img:hover {
       transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
 
     /* Avantages */
+    .avantages {
+      background-color: #ffffff;
+    }
+
     .avantages ul {
       list-style-type: none;
       max-width: 600px;
       margin: 30px auto;
       text-align: left;
-      font-size: 1.1em;
+      font-size: 1.1rem;
     }
 
     .avantages li {
-      margin-bottom: 10px;
-      padding-left: 20px;
+      margin-bottom: 15px;
+      padding-left: 30px;
       position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .avantages li:hover {
+      transform: translateX(10px);
     }
 
     .avantages li::before {
       content: "✔️";
       position: absolute;
       left: 0;
+      color: #007bff;
+      font-size: 1.2rem;
     }
 
     /* Réservation */
+    .reservation {
+      background-color: #f5f5f5;
+    }
+
     form {
       max-width: 500px;
       margin: 0 auto;
       text-align: left;
     }
 
-    form input, form select, form button {
+    form label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    form input,
+    form select,
+    form button {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       margin: 10px 0;
       border-radius: 5px;
       border: 1px solid #ccc;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    form input:focus,
+    form select:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
     }
 
     form button {
@@ -112,30 +174,90 @@
       color: white;
       border: none;
       cursor: pointer;
-      transition: background-color 0.3s;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
     form button:hover {
       background-color: #0056b3;
+      transform: translateY(-2px);
     }
 
+    /* Footer */
     footer {
-      background-color: #f5f5f5;
+      background-color: #333;
+      color: white;
       text-align: center;
-      padding: 30px 10px;
+      padding: 40px 20px;
       margin-top: 40px;
     }
 
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #ffffff;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      nav a {
+        margin: 0 10px;
+        font-size: 1rem;
+      }
+
+      .services img {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      nav {
+        flex-direction: column;
+        padding: 10px 0;
+      }
+
+      nav a {
+        margin: 10px 0;
+      }
+
+      section {
+        padding: 50px 15px;
+      }
+    }
   </style>
 </head>
 <body>
-
-  <!-- Section 1 : Titre -->
+  <!-- Header -->
   <header id="accueil">
     <h1>Mon Auto Mécanique</h1>
   </header>
 
-  <!-- Menu de navigation -->
+  <!-- Navigation -->
   <nav>
     <a href="#services">Services</a>
     <a href="#avantages">À propos</a>
@@ -143,24 +265,23 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <!-- Section 2 : Description -->
+  <!-- Description -->
   <section id="description">
     <h2>Services à domicile pour votre voiture</h2>
-    <p>Nous offrons un service de mécanique complet à domicile : entretien, réparation, diagnostic et plus encore. 
-       Profitez du confort de votre maison pendant que nous prenons soin de votre véhicule !</p>
+    <p>Nous offrons un service de mécanique complet à domicile : entretien, réparation, diagnostic et plus encore. Profitez du confort de votre maison pendant que nous prenons soin de votre véhicule !</p>
   </section>
 
-  <!-- Section 3 : Photos des services -->
+  <!-- Services -->
   <section id="services" class="services">
     <h2>Nos Services</h2>
-    <div>
+    <div class="gallery">
       <img src="https://images.unsplash.com/photo-1607860108855-31c9e42b9b3b" alt="Entretien courant">
       <img src="https://images.unsplash.com/photo-1588600878108-578307a3cc9a" alt="Réparation mécanique">
       <img src="https://images.unsplash.com/photo-1608666637852-c42c6b3e4183" alt="Diagnostic et dépannage">
     </div>
   </section>
 
-  <!-- Section 4 : Avantages -->
+  <!-- Avantages -->
   <section id="avantages" class="avantages">
     <h2>Pourquoi choisir Mon Auto Mécanique ?</h2>
     <ul>
@@ -171,42 +292,41 @@
     </ul>
   </section>
 
-  <!-- Section 5 : Réservation -->
-  <section id="reservation">
+  <!-- Réservation -->
+  <section id="reservation" class="reservation">
     <h2>Réserver un rendez-vous</h2>
     <form>
-      <label>Nom complet :</label>
-      <input type="text" placeholder="Votre nom" required>
+      <label for="nom">Nom complet :</label>
+      <input type="text" id="nom" placeholder="Votre nom" required>
 
-      <label>Numéro de téléphone :</label>
-      <input type="tel" placeholder="873-xxx-xxxx" required>
+      <label for="telephone">Numéro de téléphone :</label>
+      <input type="tel" id="telephone" placeholder="873-xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
 
-      <label>Adresse domicile :</label>
-      <input type="text" placeholder="Votre adresse" required>
+      <label for="adresse">Adresse domicile :</label>
+      <input type="text" id="adresse" placeholder="Votre adresse" required>
 
-      <label>Type de service :</label>
-      <select required>
+      <label for="service">Type de service :</label>
+      <select id="service" required>
         <option value="">Choisir un service</option>
         <option>Entretien courant</option>
         <option>Réparation mécanique</option>
         <option>Diagnostic et dépannage</option>
       </select>
 
-      <label>Date :</label>
-      <input type="date" required>
+      <label for="date">Date :</label>
+      <input type="date" id="date" required>
 
       <button type="submit">Envoyer la demande</button>
     </form>
   </section>
 
-  <!-- Section 6 : À propos -->
+  <!-- À propos -->
   <section id="apropos">
     <h2>À propos de nous</h2>
-    <p>Mon Auto Mécanique est une entreprise spécialisée dans les services mécaniques à domicile. 
-       Nous mettons la satisfaction du client au cœur de notre mission en offrant des services fiables, rapides et économiques.</p>
+    <p>Mon Auto Mécanique est une entreprise spécialisée dans les services mécaniques à domicile. Nous mettons la satisfaction du client au cœur de notre mission en offrant des services fiables, rapides et économiques.</p>
   </section>
 
-  <!-- Section 7 : Contact -->
+  <!-- Contact -->
   <footer id="contact">
     <h2>Contactez-nous</h2>
     <p>📞 Téléphone : <a href="tel:8733397207">873-339-7207</a></p>
@@ -214,5 +334,23 @@
     <p>© 2025 Mon Auto Mécanique - Tous droits réservés</p>
   </footer>
 
+  <script>
+    // Smooth section transitions
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+  </script>
 </body>
 </html>
