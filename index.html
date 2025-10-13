@@ -1,277 +1,449 @@
-body {
-  background-color: #f9f9f9;
-  color: #333;
-  line-height: 1.6;
-}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mon Auto Mécanique - Services de mécanique à domicile pour entretien, réparation et diagnostic.">
+  <title>Mon Auto Mécanique</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
 
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
-}
+    body {
+      background-color: #f8fafc;
+      color: #2d3748;
+      line-height: 1.6;
+    }
 
-/* Header */
-header {
-  text-align: center;
-  padding: 80px 20px;
-  background: linear-gradient(135deg, #ffffff, #e6e6e6);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+    /* Smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+    }
 
-header h1 {
-  font-size: 3.5rem;
-  color: #1a1a1a;
-  animation: fadeIn 1s ease-in;
-}
+    /* Header */
+    header {
+      text-align: center;
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+      color: #ffffff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-/* Navigation */
-nav {
-  background-color: #ffffff;
-  padding: 15px 0;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      animation: fadeInDown 1s ease-in-out;
+    }
 
-nav ul {
-  display: flex;
-  list-style: none;
-  justify-content: center;
-  align-items: center;
-  gap: 40px; /* Augmenté pour un meilleur espacement */
-}
+    /* Navigation */
+    nav {
+      background-color: #ffffff;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-nav a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
+    nav ul {
+      display: flex;
+      list-style: none;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+    }
 
-nav a:hover {
-  color: #007bff;
-  transform: translateY(-2px);
-}
+    nav a {
+      text-decoration: none;
+      color: #2d3748;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+    }
 
-/* Section Transitions */
-section {
-  padding: 80px 20px;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
+    nav a:hover {
+      color: #ffffff;
+      background-color: #3b82f6;
+      transform: translateY(-3px);
+    }
 
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+    /* Section Transitions */
+    section {
+      padding: 80px 20px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
 
-/* Section Services */
-.services {
-  background-color: #f5f5f5;
-}
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-.services ul {
-  list-style-type: none;
-  max-width: 600px;
-  margin: 30px auto;
-  text-align: left;
-  font-size: 1.1rem;
-}
+    h2 {
+      font-size: 2.5rem;
+      color: #1e3a8a;
+      margin-bottom: 20px;
+      position: relative;
+    }
 
-.services li {
-  margin-bottom: 15px;
-  padding-left: 30px;
-  position: relative;
-}
+    h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background-color: #3b82f6;
+      margin: 10px auto;
+      border-radius: 2px;
+    }
 
-.services li::before {
-  content: "🔧";
-  position: absolute;
-  left: 0;
-  color: #007bff;
-  font-size: 1.2rem;
-}
+    /* Section Services */
+    .services {
+      background-color: #f1f5f9;
+    }
 
-/* Avantages */
-.avantages {
-  background-color: #ffffff;
-}
+    .services ul {
+      list-style-type: none;
+      max-width: 700px;
+      margin: 30px auto;
+      text-align: left;
+      font-size: 1.1rem;
+    }
 
-.avantages ul {
-  list-style-type: none;
-  max-width: 600px;
-  margin: 30px auto;
-  text-align: left;
-  font-size: 1.1rem;
-}
+    .services li {
+      margin-bottom: 20px;
+      padding-left: 35px;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
 
-.avantages li {
-  margin-bottom: 20px;
-  padding-left: 30px;
-  position: relative;
-  transition: transform 0.3s ease;
-}
+    .services li:hover {
+      transform: translateX(10px);
+    }
 
-.avantages li:hover {
-  transform: translateX(10px);
-}
+    .services li::before {
+      content: "🔧";
+      position: absolute;
+      left: 0;
+      color: #3b82f6;
+      font-size: 1.3rem;
+    }
 
-.avantages li::before {
-  content: "✔️";
-  position: absolute;
-  left: 0;
-  color: #007bff;
-  font-size: 1.2rem;
-}
+    /* Avantages */
+    .avantages {
+      background-color: #ffffff;
+    }
 
-.avantages .description {
-  color: #555;
-  font-size: 1rem;
-  margin-top: 5px;
-  display: block;
-}
+    .avantages ul {
+      list-style-type: none;
+      max-width: 700px;
+      margin: 30px auto;
+      text-align: left;
+      font-size: 1.1rem;
+    }
 
-/* Réservation */
-.reservation {
-  background-color: #f5f5f5;
-}
+    .avantages li {
+      margin-bottom: 25px;
+      padding-left: 35px;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
 
-form {
-  max-width: 500px;
-  margin: 0 auto;
-  text-align: left;
-}
+    .avantages li:hover {
+      transform: translateX(10px);
+    }
 
-form label {
-  font-weight: 600;
-  display: block;
-  margin-bottom: 5px;
-}
+    .avantages li::before {
+      content: "✔️";
+      position: absolute;
+      left: 0;
+      color: #3b82f6;
+      font-size: 1.3rem;
+    }
 
-form input,
-form select,
-form button {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
+    .avantages .description {
+      display: block;
+      color: #4b5563;
+      font-size: 1rem;
+      margin-top: 5px;
+    }
 
-form input:focus,
-form select:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
-}
+    /* Réservation */
+    .reservation {
+      background-color: #f1f5f9;
+    }
 
-form button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
 
-form button:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
-}
+    form:hover {
+      transform: translateY(-5px);
+    }
 
-/* Footer */
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 40px 20px;
-  margin-top: 40px;
-}
+    form label {
+      font-weight: 600;
+      color: #1e3a8a;
+      display: block;
+      margin-bottom: 8px;
+    }
 
-footer a {
-  color: #007bff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
+    form input,
+    form select,
+    form button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #d1d5db;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
 
-footer a:hover {
-  color: #ffffff;
-}
+    form input:focus,
+    form select:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+    }
 
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+    form button {
+      background-color: #3b82f6;
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 14px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 2.5rem;
-  }
+    form button:hover {
+      background-color: #1e3a8a;
+      transform: translateY(-3px);
+    }
 
-  nav ul {
-    gap: 20px;
-  }
+    /* Footer */
+    footer {
+      background-color: #1e3a8a;
+      color: #ffffff;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 40px;
+    }
 
-  nav a {
-    font-size: 1rem;
-  }
-}
+    footer a {
+      color: #93c5fd;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
 
-@media (max-width: 480px) {
-  header h1 {
-    font-size: 2rem;
-  }
+    footer a:hover {
+      color: #ffffff;
+    }
 
-  nav ul {
-    flex-direction: column;
-    gap: 15px;
-  }
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-  section {
-    padding: 50px 15px;
-  }
-}
-  <label for="telephone">Numéro de téléphone :</label>
-  <input type="tel" id="telephone" placeholder="873-xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
 
-  <label for="adresse">Adresse domicile :</label>
-  <input type="text" id="adresse" placeholder="Votre adresse" required>
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
 
-  <label for="service">Type de service :</label>
-  <select id="service" required>
-    <option value="">Choisir un service</option>
-    <option>Entretien courant</option>
-    <option>Réparation mécanique</option>
-    <option>Diagnostic et dépannage</option>
-  </select>
+      nav ul {
+        gap: 20px;
+      }
 
-  <label for="marque">Marque de voiture :</label>
-  <input type="text" id="marque" placeholder="Ex. : Toyota" required>
+      nav a {
+        font-size: 1rem;
+        padding: 8px 12px;
+      }
 
-  <label for="modele">Modèle :</label>
-  <input type="text" id="modele" placeholder="Ex. : Corolla" required>
+      h2 {
+        font-size: 2rem;
+      }
+    }
 
-  <label for="annee">Année :</label>
-  <input type="number" id="annee" placeholder="Ex. : 2020" min="1900" max="2025" required>
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2rem;
+      }
 
-  <label for="date">Date :</label>
-  <input type="date" id="date" required>
+      nav ul {
+        flex-direction: column;
+        gap: 15px;
+      }
 
-  <button type="submit">Envoyer la demande</button>
-</form>
+      section {
+        padding: 50px 15px;
+      }
+
+      form {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header id="accueil">
+    <h1>Mon Auto Mécanique</h1>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#avantages">À propos</a></li>
+      <li><a href="#reservation">Réserver</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Description -->
+  <section id="description">
+    <h2>Services à domicile pour votre voiture</h2>
+    <p>Nous offrons un service de mécanique complet à domicile : entretien, réparation, diagnostic et plus encore. Profitez du confort de votre maison pendant que nous prenons soin de votre véhicule !</p>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="services">
+    <h2>Nos Services</h2>
+    <ul>
+      <li>Entretien courant : Vidanges, remplacement de filtres et vérifications générales pour maintenir votre véhicule en parfait état.</li>
+      <li>Réparation mécanique : Réparations de freins, suspensions, embrayages et autres systèmes mécaniques.</li>
+      <li>Diagnostic et dépannage : Analyse approfondie des problèmes avec des outils modernes pour des solutions rapides et efficaces.</li>
+    </ul>
+  </section>
+
+  <!-- Avantages -->
+  <section id="avantages" class="avantages">
+    <h2>Pourquoi choisir Mon Auto Mécanique ?</h2>
+    <ul>
+      <li>Gain de temps
+        <span class="description">Pas besoin de vous déplacer au garage ; nous venons directement chez vous, vous économisant des heures précieuses.</span>
+      </li>
+      <li>Souplesse
+        <span class="description">Choisissez l'horaire qui vous convient le mieux, y compris les soirs et weekends, pour un service adapté à votre vie quotidienne.</span>
+      </li>
+      <li>Transparence
+        <span class="description">Tous les coûts et interventions sont expliqués clairement à l'avance, avec des devis détaillés et sans surprises.</span>
+      </li>
+      <li>Meilleur tarif sur le marché
+        <span class="description">Profitez de prix compétitifs grâce à nos frais réduits, sans compromettre la qualité du service ou des pièces utilisées.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Réservation -->
+  <section id="reservation" class="reservation">
+    <h2>Réserver un rendez-vous</h2>
+    <form>
+      <label for="nom">Nom complet :</label>
+      <input type="text" id="nom" placeholder="Votre nom" required>
+
+      <label for="telephone">Numéro de téléphone :</label>
+      <input type="tel" id="telephone" placeholder="873-xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+
+      <label for="adresse">Adresse domicile :</label>
+      <input type="text" id="adresse" placeholder="Votre adresse" required>
+
+      <label for="service">Type de service :</label>
+      <select id="service" required>
+        <option value="">Choisir un service</option>
+        <option>Entretien courant</option>
+        <option>Réparation mécanique</option>
+        <option>Diagnostic et dépannage</option>
+      </select>
+
+      <label for="marque">Marque de voiture :</label>
+      <input type="text" id="marque" placeholder="Ex. : Toyota" required>
+
+      <label for="modele">Modèle :</label>
+      <input type="text" id="modele" placeholder="Ex. : Corolla" required>
+
+      <label for="annee">Année :</label>
+      <input type="number" id="annee" placeholder="Ex. : 2020" min="1900" max="2025" required>
+
+      <label for="date">Date :</label>
+      <input type="date" id="date" required>
+
+      <button type="submit">Envoyer la demande</button>
+    </form>
+  </section>
+
+  <!-- À propos -->
+  <section id="apropos">
+    <h2>À propos de nous</h2>
+    <p>Mon Auto Mécanique est une entreprise spécialisée dans les services mécaniques à domicile. Nous mettons la satisfaction du client au cœur de notre mission en offrant des services fiables, rapides et économiques.</p>
+  </section>
+
+  <!-- Contact -->
+  <footer id="contact">
+    <h2>Contactez-nous</h2>
+    <p>📞 Téléphone : <a href="tel:8733397207">873-339-7207</a></p>
+    <p>📧 Email : <a href="mailto:monautomecanique@gmail.com">monautomecanique@gmail.com</a></p>
+    <p>© 2025 Mon Auto Mécanique - Tous droits réservés</p>
+  </footer>
+
+  <script>
+    // Smooth section transitions with IntersectionObserver
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    // Form submission feedback (optional professional touch)
+    document.querySelector('form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Votre demande a été envoyée avec succès ! Nous vous contacterons bientôt.');
+    });
+  </script>
+</body>
+</html>
