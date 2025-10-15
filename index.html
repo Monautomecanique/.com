@@ -3,435 +3,216 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="[Description du site]">
-  <title>[Nom du site]</title>
+  <title>Mon Auto Mécanique</title>
   <style>
     * {
+      scroll-behavior: smooth;
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Arial, sans-serif;
+      font-family: Arial, sans-serif;
     }
 
     body {
-      background-color: #f8fafc;
-      color: #2d3748;
-      line-height: 1.6;
-    }
-
-    html {
-      scroll-behavior: smooth;
+      background-color: white;
+      color: black;
     }
 
     header {
       text-align: center;
-      padding: 80px 20px;
-      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-      color: #ffffff;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 60px 20px;
+      background-color: white;
     }
 
     header h1 {
-      font-size: 3.5rem;
-      font-weight: 700;
-      animation: fadeInDown 1s ease-in-out;
+      font-size: 3em;
+      color: black;
     }
 
     nav {
-      background-color: #ffffff;
-      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+      background-color: #f5f5f5;
+      padding: 15px 0;
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-      justify-content: center;
-      align-items: center;
-      gap: 40px;
     }
 
     nav a {
       text-decoration: none;
-      color: #2d3748;
-      font-weight: 600;
-      font-size: 1.1rem;
-      padding: 10px 15px;
-      border-radius: 5px;
-      transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+      color: black;
+      margin: 0 25px;
+      font-weight: bold;
+      transition: color 0.3s;
     }
 
     nav a:hover {
-      color: #ffffff;
-      background-color: #3b82f6;
-      transform: translateY(-3px);
+      color: #007bff;
     }
 
     section {
       padding: 80px 20px;
       text-align: center;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      transition: all 0.5s ease-in-out;
     }
 
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
+    /* Section Services */
+    .services img {
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin: 20px;
+      transition: transform 0.3s;
     }
 
-    h2 {
-      font-size: 2.5rem;
-      color: #1e3a8a;
-      margin-bottom: 20px;
-      position: relative;
+    .services img:hover {
+      transform: scale(1.05);
     }
 
-    h2::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 3px;
-      background-color: #3b82f6;
-      margin: 10px auto;
-      border-radius: 2px;
-    }
-
-    .services {
-      background-color: #f1f5f9;
-    }
-
-    .services ul {
-      list-style-type: none;
-      max-width: 700px;
-      margin: 30px auto;
-      text-align: left;
-      font-size: 1.1rem;
-    }
-
-    .services li {
-      margin-bottom: 20px;
-      padding-left: 35px;
-      position: relative;
-      transition: transform 0.3s ease;
-    }
-
-    .services li:hover {
-      transform: translateX(10px);
-    }
-
-    .services li::before {
-      content: "🔧";
-      position: absolute;
-      left: 0;
-      color: #3b82f6;
-      font-size: 1.3rem;
-    }
-
-    .avantages {
-      background-color: #ffffff;
-    }
-
+    /* Avantages */
     .avantages ul {
       list-style-type: none;
-      max-width: 700px;
+      max-width: 600px;
       margin: 30px auto;
       text-align: left;
-      font-size: 1.1rem;
+      font-size: 1.1em;
     }
 
     .avantages li {
-      margin-bottom: 25px;
-      padding-left: 35px;
+      margin-bottom: 10px;
+      padding-left: 20px;
       position: relative;
-      transition: transform 0.3s ease;
-    }
-
-    .avantages li:hover {
-      transform: translateX(10px);
     }
 
     .avantages li::before {
       content: "✔️";
       position: absolute;
       left: 0;
-      color: #3b82f6;
-      font-size: 1.3rem;
     }
 
-    .avantages .description {
-      display: block;
-      color: #4b5563;
-      font-size: 1rem;
-      margin-top: 5px;
-    }
-
-    .reservation {
-      background-color: #f1f5f9;
-    }
-
+    /* Réservation */
     form {
-      max-width: 600px;
+      max-width: 500px;
       margin: 0 auto;
       text-align: left;
-      background-color: #ffffff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
     }
 
-    form:hover {
-      transform: translateY(-5px);
-    }
-
-    form label {
-      font-weight: 600;
-      color: #1e3a8a;
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    form input,
-    form select,
-    form button {
+    form input, form select, form button {
       width: 100%;
-      padding: 12px;
+      padding: 10px;
       margin: 10px 0;
       border-radius: 5px;
-      border: 1px solid #d1d5db;
-      font-size: 1rem;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    form input:focus,
-    form select:focus {
-      outline: none;
-      border-color: #3b82f6;
-      box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+      border: 1px solid #ccc;
     }
 
     form button {
-      background-color: #3b82f6;
-      color: #ffffff;
+      background-color: #007bff;
+      color: white;
       border: none;
       cursor: pointer;
-      font-weight: 600;
-      font-size: 1.1rem;
-      padding: 14px;
-      transition: background-color 0.3s ease, transform 0.3s ease;
+      transition: background-color 0.3s;
     }
 
     form button:hover {
-      background-color: #1e3a8a;
-      transform: translateY(-3px);
+      background-color: #0056b3;
     }
 
     footer {
-      background-color: #1e3a8a;
-      color: #ffffff;
+      background-color: #f5f5f5;
       text-align: center;
-      padding: 40px 20px;
+      padding: 30px 10px;
       margin-top: 40px;
     }
 
-    footer a {
-      color: #93c5fd;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    footer a:hover {
-      color: #ffffff;
-    }
-
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateX(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.5rem;
-      }
-
-      nav ul {
-        gap: 20px;
-      }
-
-      nav a {
-        font-size: 1rem;
-        padding: 8px 12px;
-      }
-
-      h2 {
-        font-size: 2rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      nav ul {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      section {
-        padding: 50px 15px;
-      }
-
-      form {
-        padding: 20px;
-      }
-    }
   </style>
 </head>
 <body>
-  <!-- Header -->
+
+  <!-- Section 1 : Titre -->
   <header id="accueil">
-    <h1>[Nom du site]</h1>
+    <h1>Mon Auto Mécanique</h1>
   </header>
 
-  <!-- Navigation -->
+  <!-- Menu de navigation -->
   <nav>
-    <ul>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#avantages">À propos</a></li>
-      <li><a href="#reservation">Réserver</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <a href="#services">Services</a>
+    <a href="#avantages">À propos</a>
+    <a href="#reservation">Réserver</a>
+    <a href="#contact">Contact</a>
   </nav>
 
-  <!-- Description -->
+  <!-- Section 2 : Description -->
   <section id="description">
-    <h2>[Titre de la description]</h2>
-    <p>[Description principale du site]</p>
+    <h2>Services à domicile pour votre voiture</h2>
+    <p>Nous offrons un service de mécanique complet à domicile : entretien, réparation, diagnostic et plus encore. 
+       Profitez du confort de votre maison pendant que nous prenons soin de votre véhicule !</p>
   </section>
 
-  <!-- Services -->
+  <!-- Section 3 : Photos des services -->
   <section id="services" class="services">
     <h2>Nos Services</h2>
-    <ul>
-      <li>[Service 1] : [Description du service 1]</li>
-      <li>[Service 2] : [Description du service 2]</li>
-      <li>[Service 3] : [Description du service 3]</li>
-    </ul>
+    <div>
+      <img src="https://images.unsplash.com/photo-1607860108855-31c9e42b9b3b" alt="Entretien courant">
+      <img src="https://images.unsplash.com/photo-1588600878108-578307a3cc9a" alt="Réparation mécanique">
+      <img src="https://images.unsplash.com/photo-1608666637852-c42c6b3e4183" alt="Diagnostic et dépannage">
+    </div>
   </section>
 
-  <!-- Avantages -->
+  <!-- Section 4 : Avantages -->
   <section id="avantages" class="avantages">
-    <h2>Pourquoi nous choisir ?</h2>
+    <h2>Pourquoi choisir Mon Auto Mécanique ?</h2>
     <ul>
-      <li>[Avantage 1]
-        <span class="description">[Description de l'avantage 1]</span>
-      </li>
-      <li>[Avantage 2]
-        <span class="description">[Description de l'avantage 2]</span>
-      </li>
-      <li>[Avantage 3]
-        <span class="description">[Description de l'avantage 3]</span>
-      </li>
-      <li>[Avantage 4]
-        <span class="description">[Description de l'avantage 4]</span>
-      </li>
+      <li>Gain de temps</li>
+      <li>Souplesse</li>
+      <li>Transparence</li>
+      <li>Meilleur tarif sur le marché</li>
     </ul>
   </section>
 
-  <!-- Réservation -->
-  <section id="reservation" class="reservation">
+  <!-- Section 5 : Réservation -->
+  <section id="reservation">
     <h2>Réserver un rendez-vous</h2>
     <form>
-      <label for="nom">Nom complet :</label>
-      <input type="text" id="nom" placeholder="Votre nom" required>
+      <label>Nom complet :</label>
+      <input type="text" placeholder="Votre nom" required>
 
-      <label for="telephone">Numéro de téléphone :</label>
-      <input type="tel" id="telephone" placeholder="873-xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+      <label>Numéro de téléphone :</label>
+      <input type="tel" placeholder="873-xxx-xxxx" required>
 
-      <label for="adresse">Adresse :</label>
-      <input type="text" id="adresse" placeholder="Votre adresse" required>
+      <label>Adresse domicile :</label>
+      <input type="text" placeholder="Votre adresse" required>
 
-      <label for="service">Type de service :</label>
-      <select id="service" required>
+      <label>Type de service :</label>
+      <select required>
         <option value="">Choisir un service</option>
-        <option>[Service 1]</option>
-        <option>[Service 2]</option>
-        <option>[Service 3]</option>
+        <option>Entretien courant</option>
+        <option>Réparation mécanique</option>
+        <option>Diagnostic et dépannage</option>
       </select>
 
-      <label for="marque">Marque de voiture :</label>
-      <input type="text" id="marque" placeholder="Ex. : Toyota" required>
-
-      <label for="modele">Modèle :</label>
-      <input type="text" id="modele" placeholder="Ex. : Corolla" required>
-
-      <label for="annee">Année :</label>
-      <input type="number" id="annee" placeholder="Ex. : 2020" min="1900" max="2025" required>
-
-      <label for="date">Date :</label>
-      <input type="date" id="date" required>
+      <label>Date :</label>
+      <input type="date" required>
 
       <button type="submit">Envoyer la demande</button>
     </form>
   </section>
 
-  <!-- À propos -->
+  <!-- Section 6 : À propos -->
   <section id="apropos">
     <h2>À propos de nous</h2>
-    <p>[Description À propos]</p>
+    <p>Mon Auto Mécanique est une entreprise spécialisée dans les services mécaniques à domicile. 
+       Nous mettons la satisfaction du client au cœur de notre mission en offrant des services fiables, rapides et économiques.</p>
   </section>
 
-  <!-- Contact -->
+  <!-- Section 7 : Contact -->
   <footer id="contact">
     <h2>Contactez-nous</h2>
-    <p>📞 Téléphone : <a href="tel:[Numéro de téléphone]">[Numéro de téléphone]</a></p>
-    <p>📧 Email : <a href="mailto:[Email]">[Email]</a></p>
-    <p>© 2025 [Nom du site] - Tous droits réservés</p>
+    <p>📞 Téléphone : <a href="tel:8733397207">873-339-7207</a></p>
+    <p>📧 Email : <a href="mailto:monautomecanique@gmail.com">monautomecanique@gmail.com</a></p>
+    <p>© 2025 Mon Auto Mécanique - Tous droits réservés</p>
   </footer>
 
-  <script>
-    const sections = document.querySelectorAll('section');
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
-
-    document.querySelector('form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Votre demande a été envoyée avec succès ! Nous vous contacterons bientôt.');
-    });
-  </script>
 </body>
 </html>
