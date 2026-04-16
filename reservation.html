@@ -1,1 +1,36 @@
+<!-- Réservation -->
+  <section id="reservation" class="reservation">
+    <h2>Réserver un rendez-vous</h2>
+    <form>
+      <label for="nom">Nom complet :</label>
+      <input type="text" id="nom" placeholder="Votre nom" required>
 
+      <label for="telephone">Numéro de téléphone :</label>
+      <input type="tel" id="telephone" placeholder="873-xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+
+      <label for="adresse">Adresse domicile :</label>
+      <input type="text" id="adresse" placeholder="Votre adresse" required>
+
+      <label for="service">Type de service :</label>
+      <select id="service" required>
+        <option value="">Choisir un service</option>
+        <option>Entretien courant</option>
+        <option>Réparation mécanique</option>
+        <option>Diagnostic et dépannage</option>
+      </select>
+
+      <label for="marque">Marque de voiture :</label>
+      <input type="text" id="marque" placeholder="Ex. : Toyota" required>
+
+      <label for="modele">Modèle :</label>
+      <input type="text" id="modele" placeholder="Ex. : Corolla" required>
+
+      <label for="annee">Année :</label>
+      <input type="number" id="annee" placeholder="Ex. : 2020" min="1900" max="2025" required>
+
+      <label for="date">Date :</label>
+      <input type="date" id="date" required>
+
+      <button type="submit">Envoyer la demande</button>
+    </form>
+  </section>
