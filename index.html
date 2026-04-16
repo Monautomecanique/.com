@@ -1,419 +1,439 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Mon Auto Mécanique - Services de mécanique à domicile pour entretien, réparation et diagnostic.">
-  <title>Mon Auto Mécanique</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Arial, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ShineAutomobile - Lavage auto professionnel à domicile à Sherbrooke et environs.">
+    <title>Mon auto mecanique • Service d'entretien à domicil - Estrie</title>
 
-    body {
-      background-color: #f8fafc;
-      color: #1f2a44;
-      line-height: 1.6;
-    }
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-    /* Smooth scroll */
-    html {
-      scroll-behavior: smooth;
-    }
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
 
-    /* Header */
-    header {
-      text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-      color: #ffffff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            scroll-behavior: smooth;
+        }
 
-    header h1 {
-      font-size: 2.8rem;
-      font-weight: 600;
-      animation: fadeIn 1s ease-in;
-    }
+        .heading-font { 
+            font-family: 'Space Grotesk', sans-serif; 
+        }
 
-    /* Navigation */
-    nav {
-      background-color: #ffffff;
-      padding: 20px 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      display: flex;
-      justify-content: center;
-    }
+        .hero-bg {
+            background-image: url('Images/photo.jpeg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
 
-    nav ul {
-      display: flex;
-      flex-direction: column; /* Alignement vertical */
-      list-style: none;
-      align-items: center; /* Centrage horizontal */
-      gap: 15px; /* Espacement entre les liens */
-    }
+        /* Transitions générales entre sections */
+        section {
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-    nav a {
-      text-decoration: none;
-      color: #1f2a44;
-      font-weight: 500;
-      font-size: 1rem;
-      padding: 8px 20px;
-      border-radius: 4px;
-      transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
-      width: 150px; /* Largeur fixe pour un alignement uniforme */
-      text-align: center;
-    }
+        /* Animations d'apparition au scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.9s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
 
-    nav a:hover {
-      color: #ffffff;
-      background-color: #3b82f6;
-      transform: translateX(5px); /* Légère translation à droite au survol */
-    }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    /* Sections */
-    section {
-      padding: 60px 20px;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-    }
+        /* Animation glissée latérale */
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: all 0.9s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
 
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: all 0.99s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
 
-    h2 {
-      font-size: 2rem;
-      color: #1e3a8a;
-      margin-bottom: 15px;
-      position: relative;
-    }
+        .category-card {
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(40px);
+        }
 
-    h2::after {
-      content: '';
-      display: block;
-      width: 50px;
-      height: 2px;
-      background-color: #3b82f6;
-      margin: 10px auto;
-      border-radius: 1px;
-    }
+        .category-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    p {
-      max-width: 700px;
-      margin: 0 auto;
-      color: #4b5563;
-    }
+        .service-card {
+            transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
 
-    /* Services */
-    .services {
-      background-color: #f1f5f9;
-    }
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+        }
 
-    .services ul {
-      list-style-type: none;
-      max-width: 600px;
-      margin: 20px auto;
-      text-align: left;
-      font-size: 1rem;
-    }
+        /* Animation spécifique pour les cartes catégories */
+        .category-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 30px 60px -15px rgb(0 0 0 / 0.2);
+        }
 
-    .services li {
-      margin-bottom: 15px;
-      padding-left: 30px;
-      position: relative;
-      transition: transform 0.3s ease;
-    }
+        /* Ligne de connexion animée dans "Comment ça marche" */
+        .step-line {
+            transition: width 1.4s ease;
+        }
 
-    .services li:hover {
-      transform: translateX(8px);
-    }
-
-    .services li::before {
-      content: "🔧";
-      position: absolute;
-      left: 0;
-      color: #3b82f6;
-      font-size: 1.2rem;
-    }
-
-    /* Avantages */
-    .avantages {
-      background-color: #ffffff;
-    }
-
-    .avantages ul {
-      list-style-type: none;
-      max-width: 600px;
-      margin: 20px auto;
-      text-align: left;
-      font-size: 1rem;
-    }
-
-    .avantages li {
-      margin-bottom: 20px;
-      padding-left: 30px;
-      position: relative;
-      transition: transform 0.3s ease;
-    }
-
-    .avantages li:hover {
-      transform: translateX(8px);
-    }
-
-    .avantages li::before {
-      content: "✔️";
-      position: absolute;
-      left: 0;
-      color: #3b82f6;
-      font-size: 1.2rem;
-    }
-
-    .avantages .description {
-      display: block;
-      color: #4b5563;
-      font-size: 0.9rem;
-      margin-top: 5px;
-    }
-
-    /* Réservation */
-    .reservation {
-      background-color: #f1f5f9;
-    }
-
-    form {
-      max-width: 500px;
-      margin: 0 auto;
-      text-align: left;
-      background-color: #ffffff;
-      padding: 25px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    form:hover {
-      transform: translateY(-3px);
-    }
-
-    form label {
-      font-weight: 500;
-      color: #1e3a8a;
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    form input,
-    form select,
-    form button {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border-radius: 4px;
-      border: 1px solid #d1d5db;
-      font-size: 0.9rem;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    form input:focus,
-    form select:focus {
-      outline: none;
-      border-color: #3b82f6;
-      box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
-    }
-
-    form button {
-      background-color: #3b82f6;
-      color: #ffffff;
-      border: none;
-      cursor: pointer;
-      font-weight: 500;
-      font-size: 1rem;
-      padding: 12px;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-    form button:hover {
-      background-color: #1e3a8a;
-      transform: translateY(-2px);
-    }
-
-    /* Footer */
-    footer {
-      background-color: #1e3a8a;
-      color: #ffffff;
-      text-align: center;
-      padding: 30px 20px;
-      margin-top: 30px;
-    }
-
-    footer a {
-      color: #93c5fd;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    footer a:hover {
-      color: #ffffff;
-    }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      header h1 { font-size: 2.2rem; }
-      nav a { font-size: 0.9rem; padding: 6px 15px; width: 120px; }
-      h2 { font-size: 1.8rem; }
-      section { padding: 40px 15px; }
-      form { padding: 20px; }
-    }
-
-    @media (max-width: 480px) {
-      header h1 { font-size: 1.8rem; }
-      nav a { font-size: 0.9rem; width: 100px; }
-      h2 { font-size: 1.6rem; }
-      form { padding: 15px; }
-    }
-  </style>
+        /* Menu mobile */
+        #mobile-menu {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
 </head>
-<body>
-  <!-- Header -->
-  <header id="accueil">
-    <h1>Mon Auto Mécanique</h1>
-  </header>
 
-  <!-- Navigation -->
-  <nav>
-    <ul>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#avantages">À propos</a></li>
-      <li><a href="#reservation">Réserver</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<body class="bg-gray-50">
 
-  <!-- Description -->
-  <section id="description" class="visible">
-    <h2>Services à domicile pour votre voiture</h2>
-    <p>Nous offrons un service de mécanique complet à domicile : entretien, réparation, diagnostic et plus encore. Profitez du confort de votre maison pendant que nous prenons soin de votre véhicule !</p>
-  </section>
+    <!-- NAVBAR -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center">
 
-  <!-- Services -->
-  <section id="services" class="services">
-    <h2>Nos Services</h2>
-    <ul>
-      <li>Entretien courant : Vidanges, remplacement de filtres et vérifications générales pour maintenir votre véhicule en parfait état.</li>
-      <li>Réparation mécanique : Réparations de freins, suspensions, embrayages et autres systèmes mécaniques.</li>
-      <li>Diagnostic et dépannage : Analyse approfondie des problèmes avec des outils modernes pour des solutions rapides et efficaces.</li>
-    </ul>
-  </section>
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-[#00e0ff] rounded-2xl flex items-center justify-center text-3xl"><img src="Images/logo.jpeg"></div>
+                <div>
+                    <h1 class="heading-font text-2xl font-semibold text-gray-900">ShineAutomobile</h1>
+                    <p class="text-[10px] text-gray-500 -mt-1">LAVAGE AUTO À DOMICILE</p>
+                </div>
+            </div>
 
-  <!-- Avantages -->
-  <section id="avantages" class="avantages">
-    <h2>Pourquoi choisir Mon Auto Mécanique ?</h2>
-    <ul>
-      <li>Gain de temps
-        <span class="description">Pas besoin de vous déplacer au garage ; nous venons directement chez vous, vous économisant des heures précieuses.</span>
-      </li>
-      <li>Souplesse
-        <span class="description">Choisissez l'horaire qui vous convient le mieux, y compris les soirs et weekends, pour un service adapté à votre vie quotidienne.</span>
-      </li>
-      <li>Transparence
-        <span class="description">Tous les coûts et interventions sont expliqués clairement à l'avance, avec des devis détaillés et sans surprises.</span>
-      </li>
-      <li>Meilleur tarif sur le marché
-        <span class="description">Profitez de prix compétitifs grâce à nos frais réduits, sans compromettre la qualité du service ou des pièces utilisées.</span>
-      </li>
-    </ul>
-  </section>
+            <!-- Liens Desktop -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#categories" class="hover:text-[#00e0ff] transition-colors">Services</a>
+                <a href="#forfaits" class="hover:text-[#00e0ff] transition-colors">Forfaits</a>
+                <a href="#apropos" class="hover:text-[#00e0ff] transition-colors">À propos</a>
+                <a href="#contact" class="hover:text-[#00e0ff] transition-colors">Contact</a>
+            </div>
+            <!-- Téléphone -->
+            <div class="flex items-center gap-4">
+                <a href="tel:8733397207" class="text-sm font-medium flex items-center gap-1.5 hover:text-[#00e0ff] transition-colors">
+                    <i class="fa-solid fa-phone"></i>
+                    <span class="hidden sm:inline">8733397207</span>
+                </a>
 
-  <!-- Réservation -->
-  <section id="reservation" class="reservation">
-    <h2>Réserver un rendez-vous</h2>
-    <form>
-      <label for="nom">Nom complet :</label>
-      <input type="text" id="nom" placeholder="Votre nom" required>
+                <!-- Bouton Hamburger -->
+                <button id="menu-btn" class="md:hidden text-2xl text-gray-700 focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
 
-      <label for="telephone">Numéro de téléphone :</label>
-      <input type="tel" id="telephone" placeholder="873-xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+        <!-- Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-5 py-6 flex flex-col gap-6 text-lg font-medium">
+                <a href="#categories" class="hover:text-[#00e0ff] transition-colors">Services</a>
+                <a href="#forfaits" class="hover:text-[#00e0ff] transition-colors">Forfaits</a>
+                <a href="#apropos" class="hover:text-[#00e0ff] transition-colors">À propos</a>
+                <a href="#contact" class="hover:text-[#00e0ff] transition-colors">Contact</a>
+                <a href="tel:8733397207" class="flex items-center gap-2 text-[#00e0ff]">
+                    <i class="fa-solid fa-phone"></i> 
+                    Appeler :8733397207
+                </a>
+            </div>
+        </div>
+    </nav>
 
-      <label for="adresse">Adresse domicile :</label>
-      <input type="text" id="adresse" placeholder="Votre adresse" required>
+    <!-- HERO -->
+    <header class="hero-bg h-screen flex items-center text-white relative">
+        <div class="max-w-7xl mx-auto px-6 z-10">
+            <div class="max-w-2xl">
+            
+            <!-- Badge avec lumière verte live -->
+            <div class="inline-flex items-center gap-3 bg-white/20 backdrop-blur-md px-6 py-3 rounded-3xl text-sm mb-6 border border-white/30">
+                <div class="relative flex items-center justify-center">
+                    <span class="w-3 h-3 bg-[#00D4A5] rounded-full animate-pulse"></span>
+                    <span class="absolute w-3 h-3 bg-[#00D4A5] rounded-full animate-ping opacity-75"></span>
+                </div>
+                <span class="font-medium">...................</span>
+            </div><br><br>
 
-      <label for="service">Type de service :</label>
-      <select id="service" required>
-        <option value="">Choisir un service</option>
-        <option>Entretien courant</option>
-        <option>Réparation mécanique</option>
-        <option>Diagnostic et dépannage</option>
-      </select>
+                <h1 class="heading-font text-5xl md:text-6xl font-semibold leading-tight">
+                    .....................,<br>...................
+                </h1><br><br><br><br>
 
-      <label for="marque">Marque de voiture :</label>
-      <input type="text" id="marque" placeholder="Ex. : Toyota" required>
+                <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#categories" 
+                       class="bg-white text-gray-900 px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-red hover:text-white transition-all duration-300">
+                        Voir les services
+                    </a>
 
-      <label for="modele">Modèle :</label>
-      <input type="text" id="modele" placeholder="Ex. : Corolla" required>
+                    <a href="pageservice.html" target="_blank" 
+                       class="border border-white/70 hover:bg-blue/10 px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300">
+                        Prendre rendez-vous
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
 
-      <label for="annee">Année :</label>
-      <input type="number" id="annee" placeholder="Ex. : 2020" min="1900" max="2025" required>
+     <!-- COMMENT ÇA MARCHE -->
+    <section id="comment-ca-marche" class="py-24 bg-gray-50 fade-in">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="heading-font text-5xl font-semibold mb-4">Comment ça marche ?</h2>
+            <p class="text-gray-600 mb-12">4 étapes simples pour une voiture impeccable</p>
 
-      <label for="date">Date :</label>
-      <input type="date" id="date" required>
+            <div class="grid md:grid-cols-4 gap-8 relative">
+                <div class="hidden md:block absolute top-12 left-1/4 right-1/4 h-0.5 bg-gradient-to-r from-[#00e0ff] to-[#00c8e0] step-line"></div>
+                
+                <div class="relative z-10 fade-in"><div class="w-16 h-16 mx-auto bg-white rounded-3xl flex items-center justify-center text-4xl shadow">📅</div><h4 class="font-semibold mt-6">Vous réservez</h4><p class="text-gray-600 mt-3">En ligne ou par téléphone</p></div>
+                <div class="relative z-10 fade-in"><div class="w-16 h-16 mx-auto bg-white rounded-3xl flex items-center justify-center text-4xl shadow">✅</div><h4 class="font-semibold mt-6">Nous confirmons</h4><p class="text-gray-600 mt-3">Selon votre disponibilité</p></div>
+                <div class="relative z-10 fade-in"><div class="w-16 h-16 mx-auto bg-white rounded-3xl flex items-center justify-center text-4xl shadow">🏠</div><h4 class="font-semibold mt-6">Nous venons chez vous</h4><p class="text-gray-600 mt-3">À Sherbrooke et environs</p></div>
+                <div class="relative z-10 fade-in"><div class="w-16 h-16 mx-auto bg-white rounded-3xl flex items-center justify-center text-4xl shadow">🚗</div><h4 class="font-semibold mt-6">Votre voiture brille</h4><p class="text-gray-600 mt-3">Paiement sur place</p></div>
+            </div>
+        </div>
+    </section>
 
-      <button type="submit">Envoyer la demande</button>
-    </form>
-  </section>
+    <!-- SECTION CATÉGORIES DE VÉHICULES -->
+    <section id="categories" class="py-20 md:py-24 bg-[#f0f9ff]">
+        <div class="max-w-7xl mx-auto px-5">
+            <div class="text-center mb-12 md:mb-16 fade-in">
+                <h2 class="heading-font text-4xl font-semibold">Choisissez le type de votre véhicule</h2>
+                <p class="text-lg md:text-xl text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Pour prendre rendez-vous, veuillez sélectionner le type de votre véhicule ci-dessous.<br>
+                    Chaque catégorie contient les services et prix adaptés à votre véhicule.
+                </p>
+            </div>
 
-  <!-- À propos -->
-  <section id="apropos">
-    <h2>À propos de nous</h2>
-    <p>Mon Auto Mécanique est une entreprise spécialisée dans les services mécaniques à domicile. Nous mettons la satisfaction du client au cœur de notre mission en offrant des services fiables, rapides et économiques.</p>
-  </section>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10 max-w-5xl mx-auto">
+                
+                <!-- Sedan -->
+                <a href="sedan.html" class="category-card group bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm">
+                    <img src="Images/sedan.jpeg" alt="Sedan Shine Automobile" 
+                         class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="p-8">
+                        <h3 class="text-3xl font-semibold mb-2">Sedan / Petite voiture</h3>
+                        <p class="text-gray-600">Berlines et voitures compactes</p>
+                        <div class="mt-8 text-[#00e0ff] font-medium flex items-center gap-2">
+                            Voir les services 
+                            <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-2"></i>
+                        </div>
+                    </div>
+                </a>
 
-  <!-- Contact -->
-  <footer id="contact">
-    <h2>Contactez-nous</h2>
-    <p>📞 Téléphone : <a href="tel:8733397207">873-339-7207</a></p>
-    <p>📧 Email : <a href="mailto:monautomecanique@gmail.com">monautomecanique@gmail.com</a></p>
-    <p>© 2025 Mon Auto Mécanique - Tous droits réservés</p>
-  </footer>
+                <!-- SUV -->
+                <a href="suv.html" class="category-card group bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm">
+                    <img src="Images/vus.jpeg" alt="SUV Shine Automobile" 
+                         class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="p-8">
+                        <h3 class="text-3xl font-semibold mb-2">VUS</h3>
+                        <p class="text-gray-600">VUS et crossovers</p>
+                        <div class="mt-8 text-[#00e0ff] font-medium flex items-center gap-2">
+                            Voir les services 
+                            <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-2"></i>
+                        </div>
+                    </div>
+                </a>
 
-  <script>
-    // Smooth section transitions
-    const sections = document.querySelectorAll('section');
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
+                <!-- Van -->
+                <a href="van.html" class="category-card group bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm">
+                    <img src="Images/van.jpeg" alt="Van Shine Automobile" 
+                         class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="p-8">
+                        <h3 class="text-3xl font-semibold mb-2">Van / Minivan</h3>
+                        <p class="text-gray-600">Fourgonnettes et vans</p>
+                        <div class="mt-8 text-[#00e0ff] font-medium flex items-center gap-2">
+                            Voir les services 
+                            <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-2"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Pickup -->
+                <a href="pickup.html" class="category-card group bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm">
+                    <img src="Images/pickup.jpeg" alt="Pickup Shine Automobile" 
+                         class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="p-8">
+                        <h3 class="text-3xl font-semibold mb-2">Pickup / Camionnette</h3>
+                        <p class="text-gray-600">Pickups et camions légers</p>
+                        <div class="mt-8 text-[#00e0ff] font-medium flex items-center gap-2">
+                            Voir les services 
+                            <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-2"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+            <p class="text-center text-gray-400 text-sm mt-12">
+                Tarifs dégressifs • Intervention à domicile • Paiement sur place
+            </p>
+        </div>
+    </section>
+    
+    <!-- POURQUOI NOUS CHOISIR -->
+    <section class="py-20 bg-white fade-in">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="heading-font text-4xl font-semibold">Pourquoi nous choisir ?</h2>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div class="fade-in"><div class="text-5xl mb-4">🌱</div><h4 class="font-semibold">100% Écologique</h4><p class="text-gray-600 mt-2">Produits biodégradables certifiés</p></div>
+                <div class="fade-in"><div class="text-5xl mb-4">🏠</div><h4 class="font-semibold">Service à domicile</h4><p class="text-gray-600 mt-2">Nous nous déplaçons chez vous</p></div>
+                <div class="fade-in"><div class="text-5xl mb-4">⭐</div><h4 class="font-semibold">Garantie satisfaction</h4><p class="text-gray-600 mt-2"></p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- À PROPOS -->
+    <section id="apropos" class="py-20 bg-white fade-in">
+        <div class="max-w-7xl mx-auto px-5">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <span class="text-[#00e0ff] font-semibold">À PROPOS</span>
+                    <h2 class="heading-font text-4xl font-semibold mt-3">Mon auto mecanique</h2>
+                    <p class="mt-6 text-gray-600">
+                        Entreprise locale basée à Sherbrooke, nous offrons un service d'entretien auto professionnel à domicile.
+                    </p>
+                </div>
+                    <div class="bg-gray-50 p-6 rounded-3xl transition hover:scale-105">
+                        <p class="text-4xl font-bold text-[#00e0ff]">5/5</p>
+                        <p class="text-sm mt-2">Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TÉMOIGNAGES -->
+    <section id="temoignages" class="py-20 bg-gray-50 fade-in">
+        <div class="max-w-7xl mx-auto px-5">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="heading-font text-4xl font-semibold">Avis de nos clients</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-3xl service-card fade-in">★★★★★<p class="italic text-sm mt-4">"Service très professionnel!"</p><p class="mt-6 text-xs text-gray-500">- Marie L.</p></div>
+                <div class="bg-white p-6 rounded-3xl service-card fade-in">★★★★★<p class="italic text-sm mt-4">"Merci !"</p><p class="mt-6 text-xs text-gray-500">- Jean T.</p></div>
+                <div class="bg-white p-6 rounded-3xl service-card fade-in">★★★★★<p class="italic text-sm mt-4">Je recommande fortement."</p><p class="mt-6 text-xs text-gray-500">- Sophie D.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-20 bg-gray-900 text-white fade-in">
+        <div class="max-w-5xl mx-auto px-5 text-center">
+            <h2 class="text-4xl font-semibold mb-4">Nous contacter</h2>
+            <p class="text-gray-400 mb-12">Réponse rapide par téléphone, texto, courriel ou Instagram</p>
+    
+            <!-- 4 Icônes côte à côte -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                
+                <!-- Téléphone -->
+                <a href="tel:8733397207" 
+                   class="group flex flex-col items-center bg-white/10 hover:bg-white/20 p-8 rounded-3xl transition-all duration-300 hover:scale-105">
+                    <div class="text-2xl mb-4 transition-transform group-hover:scale-110">📞</div>
+                    <span class="font-small">Téléphone</span>
+                </a>
+    
+                <!-- Texto -->
+                <a href="sms:8733397207" 
+                   class="group flex flex-col items-center bg-white/10 hover:bg-white/20 p-8 rounded-3xl transition-all duration-300 hover:scale-105">
+                    <div class="text-2xl mb-4 transition-transform group-hover:scale-110">💬</div>
+                    <span class="font-small">Texto</span>
+                </a>
+    
+                <!-- Courriel -->
+                <a href="mailto:monautomecanique@gmail.com" 
+                   class="group flex flex-col items-center bg-white/10 hover:bg-white/20 p-8 rounded-3xl transition-all duration-300 hover:scale-105">
+                    <div class="text-2xl mb-4 transition-transform group-hover:scale-110">✉️</div>
+                    <span class="font-small">Email</span>
+                </a>
+    
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/shineautomobile_?igsh=aHlzajRhc3lldXQw" 
+                   target="_blank"
+                   class="group flex flex-col items-center bg-white/10 hover:bg-white/20 p-8 rounded-3xl transition-all duration-300 hover:scale-105 min-w-[170px]">
+                    <img src="Images/instagram.jpeg" class="w-8 h-8 mb-4 transition-transform group-hover:scale-110">
+                    <span class="font-smal">Instagram</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Flottant -->
+    <a href="https://wa.me/8733397207" target="_blank" 
+       class="fixed bottom-8 right-8 bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center text-4xl shadow-2xl hover:scale-110 transition z-50">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white py-12 fade-in">
+        <div class="max-w-7xl mx-auto px-5 text-center">
+            <p class="text-2xl font-semibold">Mon auto mecanique</p>
+            <p class="mt-2 text-sm opacity-75">Lavage auto à domicile en Estrie</p>
+            <p class="mt-8 text-sm">Sherbrooke • Magog • Bromptonville • Windsor • Waterville • Saint-Denis-de-Brompton • Orford • Ascot Corner • Ayer's Cliff • Waterloo • Coaticook • Richmond • Danville • East Angus • Cookshire-Eaton</p>
+            <p class="mt-6">
+                <a href="tel:8733397207" class="text-[#00e0ff] text-xl font-medium">8733397207</a>
+            </p>
+            <p class="text-xs opacity-50 mt-12">© 2026 Mon auto mecanique</p>
+        </div>
+    </footer>
+
+    <script>
+        // Observer pour toutes les animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Délai progressif pour les catégories
+                    if (entry.target.classList.contains('category-card')) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 120);
+                    } else {
+                        entry.target.classList.add('visible');
+                    }
+                }
+            });
+        }, { 
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
         });
-      },
-      { threshold: 0.2 }
-    );
 
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
+        // Observer toutes les sections et cartes
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .category-card').forEach(el => {
+            observer.observe(el);
+        });
 
-    // Form submission feedback
-    document.querySelector('form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Votre demande a été envoyée avec succès ! Nous vous contacterons bientôt.');
-    });
-  </script>
+        // Menu Mobile
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            
+            const icon = menuBtn.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+    </script>
 </body>
 </html>
