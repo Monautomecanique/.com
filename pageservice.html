@@ -3,161 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prendre Rendez-vous - Mon auto mécanique</title>
+    <title>Prendre Rendez-vous - Mon Auto Mécanique</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
-        body { font-family: 'Inter', system_ui, sans-serif; }
-        .heading-font { font-family: 'Space Grotesk', sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+        body { 
+            font-family: 'Inter', system_ui, sans-serif; 
+            background-color: #0a0a0a;
+            color: white;
+        }
+        .heading-font { 
+            font-family: 'Space Grotesk', sans-serif; 
+        }
     </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
+<body class="min-h-screen">
 
     <div class="max-w-3xl mx-auto px-6 py-12">
-        <a href="index.html" class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8">
+        <a href="index.html" class="inline-flex items-center gap-2 text-zinc-400 hover:text-red-500 mb-8 transition-colors">
             ← Retour à l'accueil
         </a>
 
-        <h1 class="heading-font text-5xl font-semibold text-center mb-2">Prendre Rendez-vous</h1>
-        <p class="text-center text-gray-600 mb-12">Mon auto mécanique - Service d'entretien mécanique</p>
-        <h3 class="font-medium text-amber-800">Note importante :</h3><h4 class="text-center text-gray-600 mb-12">Des frais supplémentaires peuvent être appliquer pour les services à l'éxtérieur de Sherbrooke</h4>
-        
+        <h1 class="heading-font text-5xl font-bold text-center mb-3">Prendre Rendez-vous</h1>
+        <p class="text-center text-zinc-400 mb-12">Service de mécanique automobile à domicile</p>
+
+        <div class="bg-amber-950 border border-amber-800 rounded-3xl p-6 mb-10 text-center">
+            <p class="text-amber-400 font-medium">Note importante :</p>
+            <p class="text-amber-300 mt-2">Des frais de déplacement peuvent s'appliquer à l'extérieur de Sherbrooke.</p>
+        </div>
 
         <!-- ==================== FORMULAIRE ==================== -->
         <form id="submissionForm" action="https://formsubmit.co/info.shineautomobile@gmail.com" method="POST" 
-              class="bg-white rounded-3xl shadow-xl p-10 space-y-8">
+              class="bg-zinc-900 rounded-3xl shadow-2xl p-10 space-y-8">
 
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_subject" value="Nouvelle demande de rendez-vous - ShineAutomobile">
+            <input type="hidden" name="_subject" value="Nouvelle demande de rendez-vous - Mon Auto Mécanique">
             <input type="hidden" name="_template" value="table">
 
             <!-- Nom complet -->
             <div>
-                <label class="block text-sm font-medium mb-2">Nom complet *</label>
-                <input type="text" name="nom" id="nom" required class="w-full border border-gray-300 rounded-2xl px-5 py-4 focus:outline-none focus:border-[#00e0ff]">
+                <label class="block text-sm font-medium mb-2 text-zinc-300">Nom complet *</label>
+                <input type="text" name="nom" required 
+                       class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-5 py-4 focus:outline-none focus:border-red-500 text-white">
             </div>
 
-            <!-- Service -->
+            <!-- Service choisi -->
             <div>
-                <label class="block text-sm font-medium mb-2">Service choisi *</label>
-                <select name="service" id="service" required onchange="calculerTotal()" 
-                        class="w-full border border-gray-300 rounded-2xl px-5 py-4 focus:outline-none focus:border-[#00e0ff]">
+                <label class="block text-sm font-medium mb-2 text-zinc-300">Service choisi *</label>
+                <select name="service" id="service" required 
+                        class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-5 py-4 focus:outline-none focus:border-red-500 text-white">
                     <option value="">-- Sélectionnez un service --</option>
                     
-                    <!-- Sedan, SUV, Van, Pickup et Forfaits (comme avant) -->
-                    <option value="">─ petite voiture ─</option>
-                    <option value="Lavage Extérieur Sedan">Lavage Extérieur - 40$ (Sedan)</option>
-                    <option value="Lavage Extérieur Plus Sedan">Lavage Extérieur Plus - 50$ (Sedan)</option>
-                    <option value="Lavage Intérieur Régulier Sedan">Lavage Intérieur Régulier - 75$ (Sedan)</option>
-                    <option value="Lavage Intérieur Super Sedan">Lavage Intérieur Super - 125$ (Sedan)</option>
-                    <option value="Lavage Complet Régulier Sedan">Lavage Complet Régulier - 100$ (Sedan)</option>
-                    <option value="Lavage Complet Super Sedan">Lavage Complet Super - 175$ (Sedan)</option>
-                    <option value="Shampoing des Sièges Sedan">Shampoing des Sièges - 50$ (Sedan)</option>
+                    <option value="">── ENTRETIEN GÉNÉRAL ──</option>
+                    <option value="Changement d'huile">Changement d'huile</option>
+                    <option value="Filtres à air et habitacle">Filtres à air & habitacle</option>
+                    <option value="Inspection générale">Inspection générale</option>
+                    <option value="Liquide de frein et refroidissement">Liquide de frein & refroidissement</option>
 
-                    <option value="">── SUV ──</option>
-                    <option value="Lavage Extérieur SUV">Lavage Extérieur - 40$ (SUV)</option>
-                    <option value="Lavage Extérieur Plus SUV">Lavage Extérieur Plus - 50$ (SUV)</option>
-                    <option value="Lavage Intérieur Régulier SUV">Lavage Intérieur Régulier - 80$ (SUV)</option>
-                    <option value="Lavage Intérieur Super SUV">Lavage Intérieur Super - 130$ (SUV)</option>
-                    <option value="Lavage Complet Régulier SUV">Lavage Complet Régulier - 115$ (SUV)</option>
-                    <option value="Lavage Complet Super SUV">Lavage Complet Super - 180$ (SUV)</option>
-                    <option value="Shampoing des Sièges SUV">Shampoing des Sièges - 50$ (SUV)</option>
+                    <option value="">── FREINS & SUSPENSION ──</option>
+                    <option value="Diagnostic freins">Diagnostic freins</option>
+                    <option value="Changement plaquettes de frein">Changement plaquettes de frein</option>
+                    <option value="Changement disques de frein">Changement disques + plaquettes</option>
+                    <option value="Suspension et amortisseurs">Suspension et amortisseurs</option>
 
-                    <option value="">── Van ──</option>
-                    <option value="Lavage Extérieur Van">Lavage Extérieur - 50$ (Van)</option>
-                    <option value="Lavage Extérieur Plus Van">Lavage Extérieur Plus - 60$ (Van)</option>
-                    <option value="Lavage Intérieur Régulier Van">Lavage Intérieur Régulier - 100$ (Van)</option>
-                    <option value="Lavage Intérieur Super Van">Lavage Intérieur Super - 150$ (Van)</option>
-                    <option value="Lavage Complet Régulier Van">Lavage Complet Régulier - 150$ (Van)</option>
-                    <option value="Lavage Complet Super Van">Lavage Complet Super - 200$ (Van)</option>
-                    <option value="Shampoing des Sièges Van">Shampoing des Sièges - 75$ (Van)</option>
+                    <option value="">── DIAGNOSTIC & ÉLECTRONIQUE ──</option>
+                    <option value="Diagnostic moteur">Diagnostic moteur</option>
+                    <option value="ABS / Check Engine">ABS / Check Engine</option>
+                    <option value="Batterie et alternateur">Batterie & Alternateur</option>
+                    <option value="Problèmes électriques">Problèmes électriques</option>
 
-                    <option value="">── Pickup ──</option>
-                    <option value="Lavage Extérieur Pickup">Lavage Extérieur - 50$ (Pickup)</option>
-                    <option value="Lavage Extérieur Plus Pickup">Lavage Extérieur Plus - 60$ (Pickup)</option>
-                    <option value="Lavage Intérieur Régulier Pickup">Lavage Intérieur Régulier - 100$ (Pickup)</option>
-                    <option value="Lavage Intérieur Super Pickup">Lavage Intérieur Super - 150$ (Pickup)</option>
-                    <option value="Lavage Complet Régulier Pickup">Lavage Complet Régulier - 150$ (Pickup)</option>
-                    <option value="Lavage Complet Super Pickup">Lavage Complet Super - 200$ (Pickup)</option>
-                    <option value="Shampoing des Sièges Pickup">Shampoing des Sièges - 50$ (Pickup)</option>
-
-                    <option value="">── FORFAITS ──</option>
-                    <option value="Forfait Extérieur 2-4 voitures">Forfait Extérieur 2-4 voitures - 30$/voiture</option>
-                    <option value="Forfait Extérieur 5-10 voitures">Forfait Extérieur 5-10 voitures - 25$/voiture</option>
-                    <option value="Forfait Complet 2 voitures">Forfait Complet 2 voitures - 95$/voiture</option>
-                    <option value="Forfait Complet 3-4 voitures">Forfait Complet 3-4 voitures - 90$/voiture</option>
-                    <option value="Forfait Complet 5+ voitures">Forfait Complet 5+ voitures - 80$/voiture</option>
+                    <option value="">── PNEUS & SAISONNIER ──</option>
+                    <option value="Changement de pneus">Changement de pneus (4 pneus)</option>
+                    <option value="Rotation des pneus">Rotation des pneus</option>
+                    <option value="Réparation crevaison">Réparation crevaison</option>
+                    <option value="Alignement des roues">Alignement des roues</option>
                 </select>
             </div>
 
-            <!-- Nombre de voitures + Type -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="md:col-span-1">
-                    <label class="block text-sm font-medium mb-2">Nb de voitures:</label>
-                    <select name="nombre_voitures" id="nbVoitures" onchange="calculerTotal()" class="border border-gray-300 rounded-2xl px-5 py-4 text-center">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                </div>
-                <div class="md:col-span-2">
-                    <label class="block text-sm font-medium mb-2">Nom et Type de véhicule(s)</label>
-                    <input type="text" name="type_vehicule" placeholder="Ex: Toyota camry" class="border border-gray-300 rounded-2xl px-5 py-4">
-                </div>
-            </div>
-
+            <!-- Véhicule -->
             <div>
-                <label class="block text-sm font-medium mb-2">Numéro de téléphone *</label>
-                <input type="tel" name="telephone" id="telephone" required placeholder="Ex: 873-662-3813" class="w-full border border-gray-300 rounded-2xl px-5 py-4 focus:outline-none focus:border-[#00e0ff]">
+                <label class="block text-sm font-medium mb-2 text-zinc-300">Véhicule (Marque, Modèle, Année) *</label>
+                <input type="text" name="type_vehicule" required placeholder="Ex: Toyota Camry 2018" 
+                       class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-5 py-4 focus:outline-none focus:border-red-500 text-white">
             </div>
 
+            <!-- Téléphone -->
             <div>
-                <label class="block text-sm font-medium mb-2">Adresse domicile *</label>
-                <input type="text" name="adresse" id="adresse" required placeholder="Ex: 123 rue Principale, Sherbrooke, QC" class="w-full border border-gray-300 rounded-2xl px-5 py-4 focus:outline-none focus:border-[#00e0ff]">
+                <label class="block text-sm font-medium mb-2 text-zinc-300">Numéro de téléphone *</label>
+                <input type="tel" name="telephone" required placeholder="Ex: 873-339-7207" 
+                       class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-5 py-4 focus:outline-none focus:border-red-500 text-white">
             </div>
 
+            <!-- Adresse -->
             <div>
-                <label class="block text-sm font-medium mb-2">Date souhaitée *</label>
-                <input type="date" name="date" id="maDate" required min="2026-06-01" class="border border-gray-300 rounded-2xl px-5 py-4 focus:outline-none focus:border-[#00e0ff]">
+                <label class="block text-sm font-medium mb-2 text-zinc-300">Adresse du domicile *</label>
+                <input type="text" name="adresse" required placeholder="Ex: 123 Rue Principale, Sherbrooke, QC" 
+                       class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-5 py-4 focus:outline-none focus:border-red-500 text-white">
             </div>
 
-            <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6">
-                <div class="flex justify-between items-center text-lg">
-                    <span class="font-medium">Montant total estimé:</span>
-                    <span id="totalPrice" class="text-3xl font-bold text-[#00e0ff]">0$</span>
-                </div>
-                <input type="hidden" name="montant_total" id="montant_total_hidden">
+            <!-- Date souhaitée -->
+            <div>
+                <label class="block text-sm font-medium mb-2 text-zinc-300">Date souhaitée *</label>
+                <input type="date" name="date" id="maDate" required 
+                       class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-5 py-4 focus:outline-none focus:border-red-500 text-white">
             </div>
 
-            <button type="submit" class="w-full bg-[#00e0ff] hover:bg-[#00c8e0] text-white font-semibold py-5 rounded-2xl text-xl transition">
-                Envoyer
+            <button type="submit" 
+                    class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-5 rounded-2xl text-xl transition-all duration-300">
+                Envoyer ma demande
             </button>
         </form>
+    </div>
 
-        <!-- ==================== MESSAGE DE REMERCIEMENT ==================== -->
-        <div id="successMessage" class="hidden bg-white rounded-3xl shadow-xl p-12 text-center">
+    <!-- Message de succès -->
+    <div id="successMessage" class="hidden fixed inset-0 bg-black/90 flex items-center justify-center z-50">
+        <div class="bg-zinc-900 rounded-3xl p-12 max-w-md text-center mx-4">
             <div class="text-6xl mb-6">✅</div>
-            <h2 class="heading-font text-4xl font-semibold mb-4">Merci pour votr réservation!</h2>
-            <p class="text-gray-600 text-lg mb-8">Votre demande était bien envoyé et vous serez contacté dans les prochaines 24 heures</p><br>
-            <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 text-left">
-                <p class="font-medium text-amber-800">Note importante:</p>
-                <p class="text-amber-700 mt-2">
-                    Si vous n'avez pas de nouvelles dans les <strong>24 prochaines heures</strong>, 
-                    veuillez nous appeler au <strong class="text-[#00e0ff]">873-662-3813</strong>.
-                </p>
-            </div>
-           <div class="mt-10">
+            <h2 class="heading-font text-4xl font-bold mb-4">Demande envoyée !</h2>
+            <p class="text-zinc-400 text-lg">Nous vous contacterons dans les prochaines 24 heures pour confirmer le rendez-vous.</p>
+            
+            <div class="mt-10">
                 <a href="index.html" 
-                   class="inline-flex items-center gap-2 bg-[#00e0ff] hover:bg-[#00c8e0] text-white font-semibold px-10 py-4 rounded-2xl text-lg transition-all duration-300 shadow-md hover:shadow-lg">D'accord
+                   class="inline-block bg-red-600 hover:bg-red-700 text-white font-semibold px-10 py-4 rounded-2xl">
+                    Retour à l'accueil
                 </a>
+            </div>
         </div>
     </div>
 
@@ -171,8 +143,7 @@
             setTimeout(() => {
                 form.classList.add('hidden');
                 successMessage.classList.remove('hidden');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }, 800);
+            }, 600);
 
             fetch(form.action, {
                 method: 'POST',
@@ -180,45 +151,19 @@
             }).catch(() => {});
         });
 
-        // Pré-remplissage du service
-        function getUrlParameter(name) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(name);
-        }
-
+        // Pré-remplissage du service depuis l'URL
         window.onload = function() {
-            const serviceFromUrl = getUrlParameter('service');
+            const urlParams = new URLSearchParams(window.location.search);
+            const serviceFromUrl = urlParams.get('service');
+            
             if (serviceFromUrl) {
                 document.getElementById('service').value = serviceFromUrl;
-                calculerTotal();
             }
 
             // Date minimale = aujourd'hui
             const today = new Date().toISOString().split('T')[0];
-            document.getElementById('date').min = today;
+            document.getElementById('maDate').min = today;
         };
-
-        function calculerTotal() {
-            const nb = parseInt(document.getElementById('nbVoitures').value) || 1;
-            let price = 50;
-            const text = document.getElementById('service').selectedOptions[0]?.text || "";
-
-            if (text.includes("40$")) price = 40;
-            else if (text.includes("50$")) price = 50;
-            else if (text.includes("60$")) price = 60;
-            else if (text.includes("75$")) price = 75;
-            else if (text.includes("80$")) price = 80;
-            else if (text.includes("100$")) price = 100;
-            else if (text.includes("115$")) price = 115;
-            else if (text.includes("125$")) price = 125;
-            else if (text.includes("130$")) price = 130;
-            else if (text.includes("150$")) price = 150;
-            else if (text.includes("175$") || text.includes("180$")) price = 180;
-            else if (text.includes("200$")) price = 200;
-
-            document.getElementById('totalPrice').textContent = (price * nb) + "$";
-            document.getElementById('montant_total_hidden').value = (price * nb) + "$";
-        }
     </script>
 </body>
 </html>
