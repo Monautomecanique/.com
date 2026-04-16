@@ -1,36 +1,145 @@
+.reservation {
+  background: linear-gradient(to right, #0a1f44, #0f2e63);
+  padding: 80px 20px;
+  color: white;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.reservation h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 40px;
+  opacity: 0.8;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+label {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+input,
+select {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+input:focus,
+select:focus {
+  box-shadow: 0 0 0 2px #00aaff;
+}
+
+.btn-submit {
+  grid-column: span 2;
+  padding: 15px;
+  background: #00aaff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-submit:hover {
+  background: #008ecc;
+  transform: scale(1.02);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width,
+  .btn-submit {
+    grid-column: span 1;
+  }
+}
+
 <!-- Réservation -->
-  <section id="reservation" class="reservation">
+<section id="reservation" class="reservation">
+  <div class="container">
     <h2>Réserver un rendez-vous</h2>
-    <form>
-      <label for="nom">Nom complet :</label>
-      <input type="text" id="nom" placeholder="Votre nom" required>
+    <p class="subtitle">Remplissez le formulaire ci-dessous, nous vous contacterons rapidement.</p>
 
-      <label for="telephone">Numéro de téléphone :</label>
-      <input type="tel" id="telephone" placeholder="873-xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+    <form class="form-grid">
+      
+      <div class="form-group">
+        <label for="nom">Nom complet</label>
+        <input type="text" id="nom" placeholder="Ex: Mohamed Ali" required>
+      </div>
 
-      <label for="adresse">Adresse domicile :</label>
-      <input type="text" id="adresse" placeholder="Votre adresse" required>
+      <div class="form-group">
+        <label for="telephone">Téléphone</label>
+        <input type="tel" id="telephone" placeholder="873-123-4567"
+          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+      </div>
 
-      <label for="service">Type de service :</label>
-      <select id="service" required>
-        <option value="">Choisir un service</option>
-        <option>Entretien courant</option>
-        <option>Réparation mécanique</option>
-        <option>Diagnostic et dépannage</option>
-      </select>
+      <div class="form-group full-width">
+        <label for="adresse">Adresse</label>
+        <input type="text" id="adresse" placeholder="123 Rue Exemple, Sherbrooke" required>
+      </div>
 
-      <label for="marque">Marque de voiture :</label>
-      <input type="text" id="marque" placeholder="Ex. : Toyota" required>
+      <div class="form-group">
+        <label for="service">Service</label>
+        <select id="service" required>
+          <option value="">Choisir un service</option>
+          <option>Nettoyage intérieur</option>
+          <option>Nettoyage extérieur</option>
+          <option>Nettoyage complet</option>
+        </select>
+      </div>
 
-      <label for="modele">Modèle :</label>
-      <input type="text" id="modele" placeholder="Ex. : Corolla" required>
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" id="date" required>
+      </div>
 
-      <label for="annee">Année :</label>
-      <input type="number" id="annee" placeholder="Ex. : 2020" min="1900" max="2025" required>
+      <div class="form-group">
+        <label for="marque">Marque</label>
+        <input type="text" id="marque" placeholder="Toyota" required>
+      </div>
 
-      <label for="date">Date :</label>
-      <input type="date" id="date" required>
+      <div class="form-group">
+        <label for="modele">Modèle</label>
+        <input type="text" id="modele" placeholder="Corolla" required>
+      </div>
 
-      <button type="submit">Envoyer la demande</button>
+      <div class="form-group">
+        <label for="annee">Année</label>
+        <input type="number" id="annee" placeholder="2020" min="1900" max="2026" required>
+      </div>
+
+      <button type="submit" class="btn-submit">Envoyer la demande</button>
+
     </form>
-  </section>
+  </div>
+</section>
