@@ -3,22 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entretien général - Services & Tarifs - Mon auto mécanique</title>
+    <title>Entretien Général • Mon Auto Mécanique - Sherbrooke</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
 
         body { 
             font-family: 'Inter', system_ui, sans-serif; 
             scroll-behavior: smooth;
+            background-color: #0a0a0a;
+            color: white;
         }
         .heading-font { 
             font-family: 'Space Grotesk', sans-serif; 
         }
 
-        /* Animations */
+        .service-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px -12px rgb(230 57 57 / 0.25);
+        }
+
+        .emoji {
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .emoji {
+            transform: scale(1.2) rotate(8deg);
+        }
+
+        .btn-select {
+            transition: all 0.3s ease;
+        }
+
+        .btn-select:hover {
+            transform: scale(1.05);
+            background-color: #e63939 !important;
+            color: white !important;
+        }
+
         .fade-in {
             opacity: 0;
             transform: translateY(40px);
@@ -29,94 +57,82 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        .service-card {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .service-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 30px 60px -15px rgb(0 0 0 / 0.15);
-        }
-
-        .service-card .emoji {
-            transition: all 0.4s ease;
-        }
-
-        .service-card:hover .emoji {
-            transform: scale(1.15) rotate(8deg);
-        }
-
-        .btn-select {
-            transition: all 0.3s ease;
-        }
-
-        .btn-select:hover {
-            transform: scale(1.05);
-            background-color: #00e0ff !important;
-            color: white !important;
-        }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-zinc-950">
 
     <div class="max-w-7xl mx-auto px-6 py-12">
+        
+        <!-- Retour -->
         <a href="index.html#categories" 
-           class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-10 transition-colors duration-300">
+           class="inline-flex items-center gap-2 text-zinc-400 hover:text-red-500 mb-10 transition-colors duration-300">
             ← Retour à l'accueil
         </a>
 
         <div class="text-center mb-16 fade-in visible">
-            <h1 class="heading-font text-5xl font-semibold">Entretien Général</h1>
-            <p class="text-gray-600 mt-3 text-xl"></p>
+            <span class="text-red-500 font-semibold tracking-widest">ENTRETIEN COURANT</span>
+            <h1 class="heading-font text-5xl md:text-6xl font-bold mt-3">Entretien Général</h1>
+            <p class="text-zinc-400 mt-4 text-lg">Service professionnel à domicile à Sherbrooke et environs</p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
             <!-- Carte 1 -->
-            <div class="service-card bg-white border border-gray-100 rounded-3xl p-8 shadow fade-in">
-                <div class="text-5xl mb-6 emoji">🚗</div>
-                <h3 class="text-3xl font-semibold mb-2">Changement d'hiule</h3><br><br><br>
-                <p class="text-2xl font-semibold mb-2">À partire de </p><p class="text-4xl font-bold text-[#00e0ff] mb-6">59,99$</p>
-                </p>
+            <div class="service-card bg-zinc-900 border border-zinc-800 rounded-3xl p-8 shadow-xl fade-in">
+                <div class="text-6xl mb-6 emoji">🛢️</div>
+                <h3 class="text-3xl font-semibold mb-3">Changement d'huile</h3>
+                <p class="text-zinc-400 mb-8">Huile synthétique + filtre à huile</p>
+                
+                <p class="text-2xl font-semibold mb-1">À partir de</p>
+                <p class="text-5xl font-bold text-red-500 mb-8">59,99$</p>
+                
                 <a href="pageservice.html?service=Lavage Extérieur Sedan" target="_blank" 
-                   class="btn-select block text-center bg-gray-900 text-white py-4 rounded-2xl font-medium">
+                   class="btn-select block text-center bg-white text-black py-4 rounded-2xl font-semibold text-lg">
                     Sélectionner
                 </a>
             </div>
 
             <!-- Carte 2 -->
-            <div class="service-card bg-white border border-gray-100 rounded-3xl p-8 shadow fade-in" style="animation-delay: 100ms;">
-                <div class="text-5xl mb-6 emoji">🌟</div>
-                <h3 class="text-3xl font-semibold mb-2">Filtre à aire / Habitacle</h3><br><br><br>
-                <p class="text-2xl font-semibold mb-2">À partire de </p><p class="text-4xl font-bold text-[#00e0ff] mb-6">19,99$</p>
-                </p>
+            <div class="service-card bg-zinc-900 border border-zinc-800 rounded-3xl p-8 shadow-xl fade-in" style="animation-delay: 100ms;">
+                <div class="text-6xl mb-6 emoji">🌬️</div>
+                <h3 class="text-3xl font-semibold mb-3">Filtres à air & habitacle</h3>
+                <p class="text-zinc-400 mb-8">Améliore la performance et la qualité de l'air</p>
+                
+                <p class="text-2xl font-semibold mb-1">À partir de</p>
+                <p class="text-5xl font-bold text-red-500 mb-8">19,99$</p>
+                
                 <a href="pageservice.html?service=Lavage Extérieur Plus Sedan" target="_blank" 
-                   class="btn-select block text-center bg-gray-900 text-white py-4 rounded-2xl font-medium">
+                   class="btn-select block text-center bg-white text-black py-4 rounded-2xl font-semibold text-lg">
                     Sélectionner
                 </a>
             </div>
 
             <!-- Carte 3 -->
-            <div class="service-card bg-white border border-gray-100 rounded-3xl p-8 shadow fade-in" style="animation-delay: 200ms;">
-                <div class="text-5xl mb-6 emoji">🧼</div>
-                <h3 class="text-3xl font-semibold mb-2">Inspection général</h3><br><br><br>
-                <p class="text-2xl font-semibold mb-2">À partire de </p><p class="text-4xl font-bold text-[#00e0ff] mb-6">59,99$</p>
-                </p>
+            <div class="service-card bg-zinc-900 border border-zinc-800 rounded-3xl p-8 shadow-xl fade-in" style="animation-delay: 200ms;">
+                <div class="text-6xl mb-6 emoji">🔍</div>
+                <h3 class="text-3xl font-semibold mb-3">Inspection générale</h3>
+                <p class="text-zinc-400 mb-8">Diagnostic complet de sécurité</p>
+                
+                <p class="text-2xl font-semibold mb-1">À partir de</p>
+                <p class="text-5xl font-bold text-red-500 mb-8">59,99$</p>
+                
                 <a href="pageservice.html?service=Lavage Intérieur Régulier Sedan" target="_blank" 
-                   class="btn-select block text-center bg-gray-900 text-white py-4 rounded-2xl font-medium">
+                   class="btn-select block text-center bg-white text-black py-4 rounded-2xl font-semibold text-lg">
                     Sélectionner
                 </a>
             </div>
 
             <!-- Carte 4 -->
-            <div class="service-card bg-white border border-gray-100 rounded-3xl p-8 shadow fade-in" style="animation-delay: 300ms;">
-                <div class="text-5xl mb-6 emoji">🧼</div>
-                <h3 class="text-3xl font-semibold mb-2">Liquide de frein & refroidissement</h3><br><br><br>
-                <p class="text-2xl font-semibold mb-2">À partire de </p><p class="text-4xl font-bold text-[#00e0ff] mb-6">125$</p>
-                </p>
+            <div class="service-card bg-zinc-900 border border-zinc-800 rounded-3xl p-8 shadow-xl fade-in" style="animation-delay: 300ms;">
+                <div class="text-6xl mb-6 emoji">🛠️</div>
+                <h3 class="text-3xl font-semibold mb-3">Liquide de frein & refroidissement</h3>
+                <p class="text-zinc-400 mb-8">Remplacement et purge</p>
+                
+                <p class="text-2xl font-semibold mb-1">À partir de</p>
+                <p class="text-5xl font-bold text-red-500 mb-8">125$</p>
+                
                 <a href="pageservice.html?service=Lavage Intérieur Super Sedan" target="_blank" 
-                   class="btn-select block text-center bg-gray-900 text-white py-4 rounded-2xl font-medium">
+                   class="btn-select block text-center bg-white text-black py-4 rounded-2xl font-semibold text-lg">
                     Sélectionner
                 </a>
             </div>
@@ -124,15 +140,14 @@
     </div>
 
     <!-- Bouton retour en bas -->
-    <div class="max-w-7xl mx-auto px-6 py-12 text-center">
+    <div class="max-w-7xl mx-auto px-6 py-16 text-center border-t border-zinc-800">
         <a href="index.html#categories" 
-           class="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors duration-300">
+           class="inline-flex items-center gap-2 text-zinc-400 hover:text-red-500 transition-colors duration-300 text-lg">
             ← Retour à l'accueil
         </a>
     </div>
 
     <script>
-        // Animation au scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
@@ -141,13 +156,9 @@
                     }, index * 100);
                 }
             });
-        }, {
-            threshold: 0.1
-        });
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
